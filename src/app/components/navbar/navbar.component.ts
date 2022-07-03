@@ -1,35 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StudentService } from 'src/app/services/student.service';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private studentService: StudentService,
-      private fb: FormBuilder) {
+  constructor(private studentService: StudentService, private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       age: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  addModalForm() {
+  addModalForm() {}
 
-  }
-
-  get age () {
+  get age() {
     return this.form.controls['age'];
   }
 
-  get f(){
+  get f() {
     return this.form.controls;
   }
 
@@ -38,9 +34,8 @@ export class NavbarComponent implements OnInit {
     this.form.markAsTouched();
     if (this.form.valid) {
       this.studentService.create(this.form.value).subscribe(() => {
-        window.location.reload()
+        window.location.reload();
       });
     }
   }
-
 }
