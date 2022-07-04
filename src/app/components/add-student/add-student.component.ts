@@ -13,7 +13,7 @@ export class AddStudentComponent implements OnInit {
   constructor(private fb: FormBuilder, public modal: NgbActiveModal) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
